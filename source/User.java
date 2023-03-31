@@ -1,3 +1,7 @@
+package source;
+
+import Goals.Goal;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,8 +20,6 @@ public class User {
         this.weight = weight;
         this.birthday = birthday;
 
-
-
     }
 
     private int calculateAge() {
@@ -35,6 +37,10 @@ public class User {
 
         return 1;
 
+    }
+
+    public int getWeight(){
+        return this.weight;
     }
 
     public static void main(String[] args) {

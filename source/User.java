@@ -55,6 +55,18 @@ public class User {
         return this.birthday;
     }
 
+    public void setWeight(int weight){
+        this.weight = weight;
+    }
+
+    public void setHeight(int height){
+        this.height = height;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
     public static void main(String[] args) {
         
     }

@@ -43,6 +43,18 @@ public class User {
         return this.weight;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
+    public int getHeight(){
+        return this.height;
+    }
+
+    public String getBirthday(){
+        return this.birthday;
+    }
+
     public static void main(String[] args) {
         
     }

@@ -1,112 +1,38 @@
 public class Ingredient {
-    private float water;
+    private String name;
     private float cals;
     private float protein;
-    private float lipids;
-    private float ash;
     private float carbs;
     private float fiber;
-    private float tot_sugar;
-    private float calcium;
-    private float iron;
-    private float magnesium;
-    private float phosphorous;
-    private float potassium;
-    private float sodium;
-    private float zinc;
-    private float copper;
-    private float manganese;
-    private float selenium;
-    private float vit_c;
-    private float thiamin;
-    private float riboflavin;
-    private float niacin;
-    private float panto_acid;
-    private float vit_b6;
-    private float folate;
-    private float folic_acid;
-    private float food_folate;
-    private float folate_DFE;
-    private float choline;
-    private float vit_b12;
-    private float vit_a_iu;
-    private float vit_a_rae;
-    private float retinol;
-    private float alpha_carot;
-    private float beta_carot;
-    private float beta_crypt;
-    private float lycopene;
-    private float lut_zea;
-    private float vit_e;
-    private float vit_d;
-    private float vit_d_iu;
-    private float vit_k;
-    private float sat_fats;
-    private float mono_fats;
-    private float poly_fats;
-    private float cholesterol;
-    private float gram_weight1;
-    private String description1;
-    private float gram_weight2;
-    private String description2;
-    private float refuse_percentage;
+    private float fats;
 
-
-    public Ingredient(float[] information, String desc1, String desc2){
-        this.water = information[0];
+    public Ingredient(String name, float[] information){
+        this.name = name;
         this.cals = information[1];
         this.protein = information[2];
-        this.lipids = information[3];
-        this.ash = information[4];
-        this.carbs = information[5];
-        this.fiber = information[6];
-        this.tot_sugar = information[7];
-        this.calcium = information[8];
-        this.iron = information[9];
-        this.magnesium = information[10];
-        this.phosphorous = information[11];
-        this.potassium = information[12];
-        this.sodium = information[13];
-        this.zinc = information[14];
-        this.copper = information[15];
-        this.manganese = information[16];
-        this.selenium = information[17];
-        this.vit_c = information[18];
-        this.thiamin = information[19];
-        this.riboflavin = information[20];
-        this.niacin = information[21];
-        this.panto_acid = information[22];
-        this.vit_b6 = information[23];
-        this.folate = information[24];
-        this.folic_acid = information[25];
-        this.food_folate = information[26];
-        this.folate_DFE = information[27];
-        this.choline = information[28];
-        this.vit_b12 = information[29];
-        this.vit_a_iu = information[30];
-        this.vit_a_rae = information[31];
-        this.retinol = information[32];
-        this.alpha_carot = information[33];
-        this.beta_carot = information[34];
-        this.beta_crypt = information[35];
-        this.lycopene = information[36];
-        this.lut_zea = information[37];
-        this.vit_e = information[38];
-        this.vit_d = information[39];
-        this.vit_d_iu = information[40];
-        this.vit_k = information[41];
-        this.sat_fats = information[42];
-        this.mono_fats = information[43];
-        this.poly_fats = information[44];
-        this.cholesterol = information[45];
-        this.gram_weight1 = information[46];
-        this.gram_weight2 = information[47];
-        this.refuse_percentage = information[48];
-        this.description1 = desc1;
-        this.description2 = desc2;
+        this.carbs = information[3];
+        this.fiber = information[4];
+        this.fats = information[5];
     }
 
+    public String getName() {
+        return name;
+    }
+    public float getCals() {
+        return cals;
+    }
+    public float getProtein() {
+        return protein;
+    }
+    public float getCarbs() {
+        return carbs;
+    }
+    public float getFiber() {
+        return fiber;
+    }
+    public float getFats() {
+        return fats;
+    }
     
-
 }
 

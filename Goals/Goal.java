@@ -5,6 +5,7 @@ public class Goal {
     private int initialWeight;
     private int weightGoal;
     public int targetCalories;
+//    public ExerciseIntensity intensity;
 
     public Goal(source.User user, int weightGoal, GoalsState state) {
         this.state = state;
@@ -16,7 +17,17 @@ public class Goal {
         state.handleSetCalories();
     }
 
-    public void setState(GoalsState state){
+    public void setState(GoalsState state) {
         this.state = state;
     }
+
+    public int getWeightDifference() {
+        return 0;
+    }
+
+//    public setIntensity(ExerciseIntensity intensity){
+//        this.intensity = intensity;
+//    }
+
+
 }

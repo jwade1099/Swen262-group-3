@@ -1,5 +1,5 @@
 package Goals;
 
 public interface GoalsState {
-    public void handleSetCalories();
+    void handleSetCalories(double baseCalories);
 }

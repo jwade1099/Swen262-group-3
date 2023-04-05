@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class Ingredient {
     private String name;
     private double cals;
@@ -32,5 +35,11 @@ public class Ingredient {
     }
     public double getFats() {
         return fats;
+    }
+
+    public boolean is(String typeOfFood) {
+        String[] modifiers = name.split(",");
+        HashSet<String> modSet = new HashSet<String>(Arrays.asList(modifiers));
+        return modSet.contains(typeOfFood);
     }
 }

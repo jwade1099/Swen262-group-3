@@ -16,6 +16,8 @@ public class User {
     private int age;
     private Stock stock;
     private ShoppingList list;
+    private HashMap<String, ArrayList<Object>> dailyInfo;
+    private PersonalHistory history;
 
 
     public User(String name, int height, int weight, String birthday) {
@@ -26,6 +28,8 @@ public class User {
         this.age = calculateAge(birthday);
         this.list = new ShoppingList(this);
         this.stock = new Stock(list, this);
+        this.dailyInfo = new HashMap<>();
+        this.history = new PersonalHistory();
 
     }
 
@@ -83,6 +87,12 @@ public class User {
 
     public Stock getUserStock(){
         return this.stock;
+    }
+
+    public void resetDaily(){
+        for(ArrayList<Object> a : dailyInfo.values()){
+            a.clear();
+        }
     }
 
     public static void main(String[] args) {

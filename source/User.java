@@ -2,15 +2,15 @@ package source;
 
 import Goals.Goal;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class User {
 
     private String name;
     private int height; // inches
     private int weight; //pounds
-    private String birthday; // mm/dd/yyyy
+    private String birthday; // YYYY-MM-DD
     private int age;
 
 
@@ -19,24 +19,24 @@ public class User {
         this.height = height;
         this.weight = weight;
         this.birthday = birthday;
+        this.age = calculateAge(birthday);
 
     }
 
-    private int calculateAge() {
-        // String[] elements = birthday.split("/");
+    private int calculateAge(String birthday) {
+        LocalDate dob = LocalDate.parse(birthday);
+        age = calculation(dob);
+        return age;
+    }
 
-        // int day = Integer.parseInt(elements[0]);
+    private int calculation(LocalDate dob){
+        int years = 0;
+        LocalDate curr = LocalDate.now();
+        if ((dob != null) && (curr != null)){
+            years = Period.between(dob, curr).getYears();
+        }
 
-        // Date current = new java.util.Date();
-
-        // Calendar cal = new Calendar();
-
-
-        // current.compareTo(current)
-
-
-        return 1;
-
+        return years;
     }
 
     public int getWeight(){
@@ -67,7 +67,13 @@ public class User {
         this.name = name;
     }
 
+    public int getAge(){
+        return this.age;
+    }
+
     public static void main(String[] args) {
+        User o = new User("Vandoran", 170, 100, "2003-03-27");
+        System.out.println(o.getAge());
         
     }
 

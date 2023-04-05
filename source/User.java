@@ -16,7 +16,7 @@ public class User {
     private int age;
     private Stock stock;
     private ShoppingList list;
-    private HashMap<String, ArrayList<Object>> dailyInfo;
+    private HashMap<String, Object> dailyInfo;
     private PersonalHistory history;
 
 
@@ -30,6 +30,11 @@ public class User {
         this.stock = new Stock(list, this);
         this.dailyInfo = new HashMap<>();
         this.history = new PersonalHistory();
+        this.dailyInfo.put("Weight", this.weight);
+        this.dailyInfo.put("Calories Consumed", 0);
+        this.dailyInfo.put("Target Calories", 0);
+        this.dailyInfo.put("Meals", new ArrayList<Object>());
+        this.dailyInfo.put("Workouts", new ArrayList<Object>());
 
     }
 
@@ -90,9 +95,12 @@ public class User {
     }
 
     public void resetDaily(){
-        for(ArrayList<Object> a : dailyInfo.values()){
-            a.clear();
-        }
+        this.dailyInfo = new HashMap<>();
+        this.dailyInfo.put("Weight", this.weight);
+        this.dailyInfo.put("Calories Consumed", 0);
+        this.dailyInfo.put("Target Calories", 0);
+        this.dailyInfo.put("Meals", new ArrayList<Object>());
+        this.dailyInfo.put("Workouts", new ArrayList<Object>());
     }
 
     public static void main(String[] args) {

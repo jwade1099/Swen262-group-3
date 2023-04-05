@@ -33,5 +33,4 @@ public class Ingredient {
     public double getFats() {
         return fats;
     }
-    
 }

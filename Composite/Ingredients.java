@@ -4,10 +4,15 @@ public class Ingredients implements Food {
     private double calories;
     private int stock;
 
+
+    public Ingredients(double calories, int stock) {
+        this.calories = calories;
+        this.stock = stock;
+    }
+
     @Override
     public double getCalories() {
-        // TODO Auto-generated method stub
-        return 0;
+        return calories;
     }
 
 }

@@ -9,14 +9,17 @@ public class Meal implements Food {
     private List<Food> foods;
 
     public Meal() {
-        this.calories = 0;
         this.foods = new ArrayList<>();
+        this.calories = 0;
     }
+    
 
     @Override
     public double getCalories() {
-        // TODO Auto-generated method stub
-        return 0;
+        for (Food food : foods) {
+            calories += food.getCalories();
+        }
+        return calories;
     }
     
 }

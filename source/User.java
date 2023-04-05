@@ -4,6 +4,8 @@ import Goals.Goal;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
 
@@ -12,6 +14,8 @@ public class User {
     private int weight; //pounds
     private String birthday; // YYYY-MM-DD
     private int age;
+    private Stock stock;
+    private ShoppingList list;
 
 
     public User(String name, int height, int weight, String birthday) {
@@ -20,6 +24,8 @@ public class User {
         this.weight = weight;
         this.birthday = birthday;
         this.age = calculateAge(birthday);
+        this.list = new ShoppingList(this);
+        this.stock = new Stock(list, this);
 
     }
 
@@ -71,9 +77,23 @@ public class User {
         return this.age;
     }
 
+    public ShoppingList getUserShoppingList(){
+        return this.list;
+    }
+
+    public Stock getUserStock(){
+        return this.stock;
+    }
+
     public static void main(String[] args) {
         User o = new User("Vandoran", 170, 100, "2003-03-27");
         System.out.println(o.getAge());
+
+        Stock s = o.getUserStock();
+        ShoppingList l = o.getUserShoppingList();
+
+        System.out.println(s.getStock());
+        System.out.println(l.getShoppingList());
         
     }
 

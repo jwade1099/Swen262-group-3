@@ -1,12 +1,12 @@
 public class Ingredient {
     private String name;
-    private float cals;
-    private float protein;
-    private float carbs;
-    private float fiber;
-    private float fats;
+    private double cals;
+    private double protein;
+    private double carbs;
+    private double fiber;
+    private double fats;
 
-    public Ingredient(String name, float[] information){
+    public Ingredient(String name, double[] information){
         this.name = name;
         this.cals = information[1];
         this.protein = information[2];
@@ -18,19 +18,19 @@ public class Ingredient {
     public String getName() {
         return name;
     }
-    public float getCals() {
+    public double getCals() {
         return cals;
     }
-    public float getProtein() {
+    public double getProtein() {
         return protein;
     }
-    public float getCarbs() {
+    public double getCarbs() {
         return carbs;
     }
-    public float getFiber() {
+    public double getFiber() {
         return fiber;
     }
-    public float getFats() {
+    public double getFats() {
         return fats;
     }
     

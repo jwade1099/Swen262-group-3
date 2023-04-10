@@ -5,6 +5,7 @@ import Goals.Goal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class User {
@@ -94,7 +95,12 @@ public class User {
         return this.stock;
     }
 
-    public void resetDaily(){
+    public PersonalHistory getPersonalHistory(){
+        return this.history;
+    }
+
+    public void resetDaily(Date d){
+        this.history.addNewData(d, dailyInfo);
         this.dailyInfo = new HashMap<>();
         this.dailyInfo.put("Weight", this.weight);
         this.dailyInfo.put("Calories Consumed", 0);
@@ -112,6 +118,13 @@ public class User {
 
         System.out.println(s.getStock());
         System.out.println(l.getShoppingList());
+
+        Date d = new Date();
+
+        PersonalHistory h = o.getPersonalHistory();
+        o.resetDaily(d);
+        System.out.println(h.getHistory());
+
         
     }
 

@@ -12,6 +12,7 @@ public class User {
     private int weight; //pounds
     private String birthday; // mm/dd/yyyy
     private int age;
+    private int daily_target;
 
 
     public User(String name, int height, int weight, String birthday) {
@@ -41,6 +42,10 @@ public class User {
 
     public int getWeight(){
         return this.weight;
+    }
+
+    public void add_calories_target(int calories){
+        daily_target = daily_target + calories;
     }
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@ package Composite;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Composite {
     public static void main(String[] args) {
         Food ingredient1 = new Ingredients(100, 20);
@@ -10,6 +11,8 @@ public class Composite {
 
 
         List<Food> foodsList = new ArrayList<>();
+
+        
         
 
         //Food recipe1 = new Recipe()

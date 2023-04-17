@@ -15,6 +15,7 @@ public class User {
     private int weight; //pounds
     private String birthday; // YYYY-MM-DD
     private int age;
+
     private Stock stock;
     private ShoppingList list;
     private DailyInfo dailyInfo;
@@ -101,6 +102,10 @@ public class User {
 
     public DailyInfo getDailyInfo(){
         return this.dailyInfo;
+    }
+
+    public void add_calories_target(int calories){
+        daily_target = daily_target + calories;
     }
 
     public static void main(String[] args) {

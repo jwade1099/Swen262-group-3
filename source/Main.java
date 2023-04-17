@@ -6,7 +6,8 @@ public class Main {
     
     enum Command {
         HELP,
-        LOGIN
+        LOGIN,
+        WORKOUT
     };
 
     public static boolean input(Scanner scanner) {
@@ -23,6 +24,9 @@ public class Main {
     }
 
     public static void login() {
+    }
+     
+    public static void workout() {
     }
 
     

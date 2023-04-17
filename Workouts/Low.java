@@ -1,6 +1,6 @@
 package Workouts;
 
-public class High implements WorkoutStrat{
+public class Low implements WorkoutStrat{
     private int duration;
     private double intensity;
     public String time_date;

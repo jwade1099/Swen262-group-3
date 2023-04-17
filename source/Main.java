@@ -26,7 +26,12 @@ public class Main {
     public static void login() {
     }
      
-    public static void workout() {
+    public static void workout(Scanner scanner) {
+        String inputString = scanner.nextLine();
+        System.out.println("please choose High, Medium, or Low workout.");
+        if(inputString == "High"){
+            System.out.println("you picked High");
+        }
     }
 
     

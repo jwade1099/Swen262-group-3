@@ -17,7 +17,7 @@ public class User {
     private int age;
     private Stock stock;
     private ShoppingList list;
-    private HashMap<String, Object> dailyInfo;
+    private DailyInfo dailyInfo;
     private PersonalHistory history;
 
 
@@ -29,13 +29,8 @@ public class User {
         this.age = calculateAge(birthday);
         this.list = new ShoppingList(this);
         this.stock = new Stock(list, this);
-        this.dailyInfo = new HashMap<>();
+        this.dailyInfo = new DailyInfo(this.weight);
         this.history = new PersonalHistory();
-        this.dailyInfo.put("Weight", this.weight);
-        this.dailyInfo.put("Calories Consumed", 0);
-        this.dailyInfo.put("Target Calories", 0);
-        this.dailyInfo.put("Meals", new ArrayList<Object>());
-        this.dailyInfo.put("Workouts", new ArrayList<Object>());
 
     }
 
@@ -101,12 +96,7 @@ public class User {
 
     public void resetDaily(Date d){
         this.history.addNewData(d, dailyInfo);
-        this.dailyInfo = new HashMap<>();
-        this.dailyInfo.put("Weight", this.weight);
-        this.dailyInfo.put("Calories Consumed", 0);
-        this.dailyInfo.put("Target Calories", 0);
-        this.dailyInfo.put("Meals", new ArrayList<Object>());
-        this.dailyInfo.put("Workouts", new ArrayList<Object>());
+        this.dailyInfo.reset(this.weight);
     }
 
     public static void main(String[] args) {
@@ -123,7 +113,7 @@ public class User {
 
         PersonalHistory h = o.getPersonalHistory();
         o.resetDaily(d);
-        System.out.println(h.getHistory());
+        h.printHistory();
 
         
     }

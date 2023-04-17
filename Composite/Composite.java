@@ -2,6 +2,7 @@ package Composite;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,19 @@ public class Composite {
 
             System.out.println(jsonObject.toString());
             
+            
 
 
-            String name = (String)jsonObject.get("users.Name");
+            String name = (String)jsonObject.get("name");
             System.out.println(name);
 
+            jsonObject.put("hello", "world");
+
+          
+            FileWriter file = new FileWriter("Composite/foods.json");
+            file.write(jsonObject.toJSONString());
+            file.close();
+        
 
         } catch (Exception e) {
             // TODO Auto-generated catch block

@@ -99,6 +99,10 @@ public class User {
         this.dailyInfo.reset(this.weight);
     }
 
+    public DailyInfo getDailyInfo(){
+        return this.dailyInfo;
+    }
+
     public static void main(String[] args) {
         User o = new User("Vandoran", 170, 100, "2003-03-27");
         System.out.println(o.getAge());

@@ -24,7 +24,6 @@ public class High implements WorkoutStrat{
     @Override
     public void add_calories_target(int calories) {
         // source.User.add_calories_target(calories);
-
     }
     
 }

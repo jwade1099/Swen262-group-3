@@ -5,17 +5,17 @@ import java.util.HashMap;
 import java.util.Date;
 
 public class PersonalHistory {
-    private HashMap<Date, HashMap<String, Object>> history;
+    private HashMap<Date, DailyInfo> history;
     
     public PersonalHistory(){
         this.history = new HashMap<>();
     }
 
-    public void addNewData(Date date, HashMap<String, Object> info){
+    public void addNewData(Date date, DailyInfo info){
         this.history.put(date, info);
     }
 
-    public HashMap<Date, HashMap<String, Object>> getHistory(){
+    public HashMap<Date, DailyInfo> getHistory(){
         return this.history;
     }
 

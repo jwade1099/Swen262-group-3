@@ -2,6 +2,7 @@ package source;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Date;
 
 public class PersonalHistory {
@@ -17,6 +18,15 @@ public class PersonalHistory {
 
     public HashMap<Date, DailyInfo> getHistory(){
         return this.history;
+    }
+
+    public void printHistory(){
+        for(Map.Entry<Date, DailyInfo> element : history.entrySet()){
+            Date key = element.getKey();
+            DailyInfo val = element.getValue();
+
+            System.out.println("{" + key + " : {" + val.toString() + "}}");
+        }
     }
 
 }

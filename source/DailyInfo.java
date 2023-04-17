@@ -2,6 +2,7 @@ package source;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class DailyInfo {
     private HashMap<String, Object> dailyInfo;
@@ -55,6 +56,22 @@ public class DailyInfo {
             workouts.add(workout);
             this.dailyInfo.put("Workouts", workouts);
         }
+    }
+
+    public String toString(){
+        String s = "";
+        for(Map.Entry<String, Object> mapElement : dailyInfo.entrySet()){
+            String key = mapElement.getKey();
+            String val = mapElement.getValue().toString();
+            if(!key.equals("Weight")){
+                s = s + (key + " : " + val + ", ");
+            }
+            else{
+                s = s + (key + " : " + val);
+            }
+        }
+
+        return s;
     }
 
 }

@@ -113,7 +113,7 @@ public class User {
 
         PersonalHistory h = o.getPersonalHistory();
         o.resetDaily(d);
-        System.out.println(h.getHistory());
+        h.printHistory();
 
         
     }

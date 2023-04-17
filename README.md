@@ -6,11 +6,15 @@
 * Jensen DeRosier
 * Vandoran Huston
 
-
-
 ### Things that affect targetCalories:
+* [ ] weight / height / age
 * [ ] currentWeight
 * [ ] targetWeight
-* [ ] goal
-* [ ] workoutIntensity
+* [ ] goal (gain / lose / maintain)
+* [ ] workoutIntensity (high / medium / low)
 
+
+- baseCalories =  (9.99 * currentWeight) + (6.25 * height) - (4.92 * age) - 83
+- calorieDeficit = -500
+- calorieSurplus = 500
+- dailyCalories = baseCalories + goalVariable(StatePattern)

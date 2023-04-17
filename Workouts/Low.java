@@ -1,5 +1,8 @@
 package Workouts;
 
+import source.DailyInfo;
+import source.User;
+
 public class Low implements WorkoutStrat{
     private int duration;
     private double intensity;
@@ -22,9 +25,9 @@ public class Low implements WorkoutStrat{
     }
 
     @Override
-    public void add_calories_target(int calories) {
-        // source.User.add_calories_target(calories);
-
+    public void add_calories_target(int calories, User user) { 
+        DailyInfo info = user.getDailyInfo(); 
+        info.addCalories(calories);
     }
     
 }

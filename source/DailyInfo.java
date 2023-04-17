@@ -31,6 +31,13 @@ public class DailyInfo {
         this.dailyInfo.put("Workouts", new ArrayList<Object>());
     }
 
+    public void getWorkoutHistory(){
+        ArrayList<Object> workouts = (ArrayList<Object>)this.dailyInfo.get("Workouts");
+        for(int i = 0; i < workouts.size(); i++){
+            System.out.println(workouts.get(i));
+        }
+    }
+
     public void setWeight(Double weight){
         this.dailyInfo.put("Weight", weight);
     }

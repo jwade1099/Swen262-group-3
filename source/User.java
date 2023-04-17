@@ -104,10 +104,6 @@ public class User {
         return this.dailyInfo;
     }
 
-    public void add_calories_target(int calories){
-        daily_target = daily_target + calories;
-    }
-
     public static void main(String[] args) {
         User o = new User("Vandoran", 170, 100, "2003-03-27");
         System.out.println(o.getAge());

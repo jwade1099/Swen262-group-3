@@ -9,7 +9,8 @@ public class LoseWeight implements GoalsState {
     }
 
     @Override
-    public void handleSetCalories(double baseCalories) {
+    public void handleSetCalories() {
+        double baseCalories = context.setBaseCalories();
         if(context.getCurrentWeight() <= context.getWeightGoal()){
             context.setState(new MaintainWeight(context));
             context.setCalories();

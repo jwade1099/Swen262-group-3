@@ -8,7 +8,8 @@ public class MaintainWeight implements GoalsState {
     }
 
     @Override
-    public void handleSetCalories(double baseCalories) {
+    public void handleSetCalories() {
+        double baseCalories = context.setBaseCalories();
         double weightDifference = context.getWeightDifference();
         if (weightDifference >= 2.27) {
             context.setState(new LoseWeight(context));

@@ -11,20 +11,11 @@ public class Goal {
      */
     private double initialWeight;
 
-    /**
-     * user's current weight.
-     */
-    private double currentWeight;
 
     /**
      * user's weight goal.
      */
     private double weightGoal;
-
-    /**
-     * user's daily target calories before workout and goal change.
-     */
-    private double baseCalories;
 
     /**
      * user's daily target calories.
@@ -33,26 +24,25 @@ public class Goal {
 //    private double workoutCalories;
 
 
-    public Goal(source.User user, int age, int weightGoal) {
+    public Goal(source.User user, int weightGoal) {
         this.user = user;
         this.initialWeight = user.getWeight();
-        this.currentWeight = user.getWeight();
         this.weightGoal = weightGoal;
+        this.state = new MaintainWeight(this);
 
-        setBaseCalories(age);
+        setBaseCalories();
         setCalories();
     }
 
 
     /**
-     * Set the user's current weight as the {@link #currentWeight} and {@link #initialWeight}, and the
+     * Set the user's current weight as the {@link #initialWeight}, and the
      *
      * @param state to set as new {@link #state}.
      */
     public void setState(GoalsState state) {
         this.state = state;
         this.initialWeight = user.getWeight();
-        this.currentWeight = user.getWeight();
     }
 
 
@@ -60,7 +50,7 @@ public class Goal {
      * Set the {@link #targetCalories} based on the current state.
      */
     public void setCalories() {
-        state.handleSetCalories(baseCalories);
+        state.handleSetCalories();
     }
 
 
@@ -73,10 +63,10 @@ public class Goal {
 
 
     /**
-     * @param age used to determine the {@link #baseCalories}.
+     * Set the base calories a person has to eat daily based on their weight height and age
      */
-    public void setBaseCalories(int age) {
-        this.baseCalories = (9.99 * currentWeight) + (6.25 * user.getHeight()) - (4.92 * age) - 83;
+    public double setBaseCalories() {
+        return (9.99 * user.getWeight()) + (6.25 * user.getHeight()) - (4.92 * user.getAge()) - 83;
     }
 
 
@@ -87,14 +77,12 @@ public class Goal {
         this.weightGoal = weightGoal;
     }
 
-
     /**
-     * @param currentWeight to set as the new {@link #currentWeight}.
+     * @return the user's current weight
      */
-    public void setCurrentWeight(double currentWeight) {
-        this.currentWeight = currentWeight;
+    public double getCurrentWeight() {
+        return user.getWeight();
     }
-
 
     /**
      * @return the current {@link #weightGoal}.
@@ -112,18 +100,11 @@ public class Goal {
     }
 
 
-    /**
-     * @return the user's {@link #currentWeight}
-     */
-    public double getCurrentWeight() {
-        return this.currentWeight;
-    }
-
 
     /**
-     * @return the difference between the {@link #currentWeight} and the {@link #initialWeight}.
+     * @return the difference between the user's current weight and the {@link #initialWeight}.
      */
     public double getWeightDifference() {
-        return currentWeight - initialWeight;
+        return user.getWeight() - initialWeight;
     }
 }

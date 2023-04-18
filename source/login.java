@@ -32,6 +32,7 @@ public class login {
             file.write(userList.toJSONString());
             file.flush();
             file.close();
+            System.out.println("New user created");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -96,6 +96,7 @@ public class Main {
         int weightGoal = scanner.nextInt();
         GOAL = new Goal(USER, weightGoal);
         GOAL.setCalories();
+        USER.getDailyInfo().setTarget((int)GOAL.getTargetCalories());
     }
 
 
@@ -108,7 +109,7 @@ public class Main {
 
             // Prompt the user to choose weight goal
             goal(scanner);
-            System.out.println("Your current daily target calories are: " + GOAL.getTargetCalories());
+            System.out.println("Your current daily target calories are: " + USER.getDailyInfo());
 
             // Ask user if they want to do workout and for how long
             System.out.println("type workout to workout");

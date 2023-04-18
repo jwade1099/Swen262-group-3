@@ -3,11 +3,13 @@ package source;
 import java.util.Scanner;
 
 import Goals.Goal;
+import Workouts.Workout;
 import org.json.simple.JSONObject;
 
 
 public class Main {
     private static User USER;
+    private static Workout WORKOUT;
     private static Goal GOAL;
 
     enum Command {
@@ -15,8 +17,6 @@ public class Main {
         LOGIN,
         WORKOUT
     }
-
-    ;
 
     public static boolean input(Scanner scanner) {
         System.out.println(">> ");
@@ -36,31 +36,62 @@ public class Main {
             System.out.println("please login or create an account: (login / create)");
             String command = scanner.nextLine();
             if (command.equals("login") || command.equals("create")) {
-                System.out.println("Enter username");
+                System.out.print("Enter username: ");
                 String username = scanner.nextLine();
-                System.out.println("Enter password");
+                System.out.print("Enter password: ");
                 String password = scanner.nextLine();
 
-                if (command.equals("create")) login.add_user(username, password);
+                // if command is to create new user, prompt to make new user with given name
+                if (command.equals("create")) {
+                    USER = makeNewUser(scanner, username);
+                    login.add_user(USER, password);
+                }
                 try {
-                    JSONObject user = login.authenticate(username, password);
-                    String name = (String) user.get("username");
-                    System.out.println(name);
+                    USER = login.authenticate(username, password);
+                    System.out.println("Hello " + USER.getName());
                     break;
                 } catch (NullPointerException e) {
                     System.out.println("Wrong password or username.");
                 }
+            }
+            if(command.equals("quit") || command.equals("exit")){
+                break;
             }
         }
 
     }
 
     public static void workout(Scanner scanner) {
-        String inputString = scanner.nextLine();
         System.out.println("please choose High, Medium, or Low workout.");
-        if (inputString == "High") {
-            System.out.println("you picked High");
+        String inputString = scanner.nextLine();
+        if (inputString.equals("High")) {
+            System.out.println("you picked a High workout");
+            WORKOUT = makeNewWorkout("High");
+        } else if (inputString.equals("Medium")) {
+            WORKOUT = makeNewWorkout("Medium");
+            System.out.println("you picked a Medium workout");
+        } else if (inputString.equals("Low")) {
+            WORKOUT = makeNewWorkout("Low");
+            System.out.println("you picked a Low workout");
         }
+    }
+
+    public static Workout makeNewWorkout(String intensity){
+
+        return new Workout(100,7.5);
+    }
+
+    public static User makeNewUser(Scanner scanner, String name) {
+        System.out.print("Enter birthday <YYYY-MM-DD: ");
+        String birthday = scanner.nextLine();
+
+        System.out.print("Enter height: ");
+        int height = scanner.nextInt();
+
+        System.out.print("Enter weight: ");
+        int weight = scanner.nextInt();
+
+        return new User(name, height, weight, birthday);
     }
 
 
@@ -68,11 +99,20 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, Welcome To nutriApp, your own fitness companion!");
 
+        // Prompt the user to log in or create an account
         login(scanner);
 
+        // Prompt the user to choose weight goal
 
-        System.out.println("Welcome ");
 
+        // Ask user if they want to do workout and for how long
+        String command = scanner.nextLine();
+        if (command.equals("workout")) {
+            workout(scanner);
+        }
+        //show stock
+        //show meal
+        //view goal for the day
 
         scanner.close();
     }

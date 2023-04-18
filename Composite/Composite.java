@@ -18,48 +18,35 @@ public class Composite {
 
         List<Food> foodsList = new ArrayList<>();
 
-        JSONParser parser = new JSONParser();
-        try {
-            Object obj = parser.parse(new FileReader("Composite/foods.json"));
+        // JSONParser parser = new JSONParser();
+        // try {
+        //     Object obj = parser.parse(new FileReader("Composite/foods.json"));
             
-            JSONObject jsonObject = (JSONObject)obj;
+        //     JSONObject jsonObject = (JSONObject)obj;
 
-            System.out.println(jsonObject.toString());
+        //     System.out.println(jsonObject.toString());
             
             
 
 
-            String name = (String)jsonObject.get("name");
-            System.out.println(name);
+        //     String name = (String)jsonObject.get("name");
+        //     System.out.println(name);
 
-            jsonObject.put("hello", "world");
+        //     jsonObject.put("hello", "world");
 
           
-            FileWriter file = new FileWriter("Composite/foods.json");
-            file.write(jsonObject.toJSONString());
-            file.close();
+        //     FileWriter file = new FileWriter("Composite/foods.json");
+        //     file.write(jsonObject.toJSONString());
+        //     file.close();
         
 
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // } catch (Exception e) {
+        //     // TODO Auto-generated catch block
+        //     e.printStackTrace();
+        // }
 
 
-
-
-
-        
-
-        
-
-        
-        
-
-        
-        
-
-        //Food recipe1 = new Recipe()
+        Food recipe1 = new Recipe(foodsList);
     
     }
 }

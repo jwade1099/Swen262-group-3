@@ -17,7 +17,7 @@ public class login {
         userJSON.put("Height", user.getHeight()); // user height
         userJSON.put("Weight", user.getWeight()); // user weight
         userJSON.put("Birthday", user.getBirthday()); // user birthday
-
+ 
         JSONObject userObject = new JSONObject();
         userObject.put("user", userJSON);
 

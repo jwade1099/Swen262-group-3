@@ -18,6 +18,8 @@ public class meals {
 
         codes.add("01002");
 
+        ArrayList<Food> recipes = new ArrayList<>();
+
         String line = "";
 
         try   {  
@@ -27,6 +29,12 @@ public class meals {
             String[] foodDetails = line.split(",");    // seperates using a comma
             if (codes.contains(foodDetails[0])) {
                 System.out.println(foodDetails[0]);
+
+                int calories = Integer.parseInt(foodDetails[3]) ;
+                String name = foodDetails[1];
+                Ingredients ingredient = new Ingredients(calories, name);
+                recipes.add(ingredient);
+
             }
             }  
 
@@ -39,7 +47,7 @@ public class meals {
         
 
 
-        return null;
+        return recipes;
     }
 
     public static void main(String[] args) {

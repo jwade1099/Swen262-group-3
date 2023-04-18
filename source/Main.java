@@ -111,6 +111,7 @@ public class Main {
             System.out.println("Your current daily target calories are: " + GOAL.getTargetCalories());
 
             // Ask user if they want to do workout and for how long
+            System.out.println("type workout to workout");
             String command = scanner.nextLine();
             if (command.equals("workout")) {
                 workout(scanner);

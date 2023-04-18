@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Ingredients implements Food {
     private double calories;
-    private int stock;
+    private String name;
 
 
-    public Ingredients(double calories, int stock) {
+    public Ingredients(double calories, String name) {
         this.calories = calories;
-        this.stock = stock;
+        this.name = name;
     }
 
     @Override

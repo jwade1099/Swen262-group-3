@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 import Goals.Goal;
 import Workouts.Workout;
-import org.json.simple.JSONObject;
 
 
 public class Main {
@@ -53,12 +52,10 @@ public class Main {
                 } catch (NullPointerException e) {
                     System.out.println("Wrong password or username.");
                 }
-            }
-            if(command.equals("quit") || command.equals("exit")){
+            } else {
                 break;
             }
         }
-
     }
 
     public static void workout(Scanner scanner) {
@@ -76,44 +73,54 @@ public class Main {
         }
     }
 
-    public static Workout makeNewWorkout(String intensity){
+    public static Workout makeNewWorkout(String intensity) {
 
-        return new Workout(100,7.5);
+        return new Workout(100, 7.5);
     }
 
     public static User makeNewUser(Scanner scanner, String name) {
-        System.out.print("Enter birthday <YYYY-MM-DD: ");
+        System.out.print("Enter birthday <YYYY-MM-DD>: ");
         String birthday = scanner.nextLine();
 
-        System.out.print("Enter height: ");
+        System.out.print("Enter height <cm>: ");
         int height = scanner.nextInt();
 
-        System.out.print("Enter weight: ");
+        System.out.print("Enter weight <Kg>: ");
         int weight = scanner.nextInt();
 
         return new User(name, height, weight, birthday);
+    }
+
+    public static void goal(Scanner scanner) {
+        System.out.println("Please choose a weight goal. (Current weight: " + USER.getWeight() + ")");
+        int weightGoal = scanner.nextInt();
+        GOAL = new Goal(USER, weightGoal);
+        GOAL.setCalories();
     }
 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, Welcome To nutriApp, your own fitness companion!");
+        try {
+            // Prompt the user to log in or create an account
+            login(scanner);
 
-        // Prompt the user to log in or create an account
-        login(scanner);
+            // Prompt the user to choose weight goal
+            goal(scanner);
+            System.out.println("Your current daily target calories are: " + GOAL.getTargetCalories());
 
-        // Prompt the user to choose weight goal
-
-
-        // Ask user if they want to do workout and for how long
-        String command = scanner.nextLine();
-        if (command.equals("workout")) {
-            workout(scanner);
+            // Ask user if they want to do workout and for how long
+            String command = scanner.nextLine();
+            if (command.equals("workout")) {
+                workout(scanner);
+            }
+            //show stock
+            //show meal
+            //view goal for the day
+        }catch(Exception e){
+            System.out.println("System exit.");
         }
-        //show stock
-        //show meal
-        //view goal for the day
-
         scanner.close();
     }
 

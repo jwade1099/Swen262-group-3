@@ -26,7 +26,26 @@ public class Main {
         return false;
     }
 
-    public static void login() {
+    public static void login(Scanner scanner) {
+        while(true) {
+            System.out.println("please login or create an account: (login / create)");
+            String command = scanner.nextLine();
+            if (command.equals("login") || command.equals("create")) {
+                System.out.println("Enter username");
+                String username = scanner.nextLine();
+                System.out.println("Enter password");
+                String password = scanner.nextLine();
+
+                if(command.equals("create")) login.add_user(username, password);
+                
+                JSONObject user = login.authenticate(username, password);
+
+                String name = (String)user.get("username");
+                System.out.println(name);
+                break;
+
+            }
+        }
         
     }
      
@@ -43,24 +62,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, Welcome To nutriApp, your own fitness companion!");
 
-        while(true) {
-            System.out.println("please login or create an account: (login / create)");
-            String command = scanner.nextLine();
-            if (command.equals("login") || command.equals("create")) {
-                System.out.println("Enter username");
-                String username = scanner.nextLine();
-                System.out.println("Enter password");
-                String password = scanner.nextLine();
+        login(scanner);
 
-                if(command.equals("create")) login.add_user(username, password);
-                
-                JSONObject user = login.authenticate(username, password);
+        
 
-                String name = (String)user.get("username");
-                break;
-
-            }
-        }
+        System.out.println("Welcome ");
 
         
         scanner.close();

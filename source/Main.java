@@ -2,10 +2,13 @@ package source;
 
 import java.util.Scanner;
 
+import Goals.Goal;
 import org.json.simple.JSONObject;
 
 
 public class Main {
+    private static User USER;
+    private static Goal GOAL;
     
     enum Command {
         HELP,

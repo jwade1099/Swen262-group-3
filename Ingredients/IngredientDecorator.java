@@ -1,3 +1,5 @@
+package Ingredients;
+
 public class IngredientDecorator extends Ingredient{
     protected Ingredient ingredient;
 

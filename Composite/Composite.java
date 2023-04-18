@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.core.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 

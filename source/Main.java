@@ -2,6 +2,9 @@ package source;
 
 import java.util.Scanner;
 
+import org.json.simple.JSONObject;
+
+
 public class Main {
     
     enum Command {
@@ -24,6 +27,7 @@ public class Main {
     }
 
     public static void login() {
+        
     }
      
     public static void workout(Scanner scanner) {
@@ -38,11 +42,27 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, Welcome To nutriApp, your own fitness companion!");
-        while (true) {
-            if (input(scanner)) {
+
+        while(true) {
+            System.out.println("please login or create an account: (login / create)");
+            String command = scanner.nextLine();
+            if (command.equals("login") || command.equals("create")) {
+                System.out.println("Enter username");
+                String username = scanner.nextLine();
+                System.out.println("Enter password");
+                String password = scanner.nextLine();
+
+                if(command.equals("create")) login.add_user(username, password);
+                
+                JSONObject user = login.authenticate(username, password);
+
+                String name = (String)user.get("username");
                 break;
+
             }
         }
+
+        
         scanner.close();
     }
     

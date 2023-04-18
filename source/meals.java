@@ -18,7 +18,11 @@ public class meals {
 
         codes.add("01002");
 
-        ArrayList<Food> recipes = new ArrayList<>();
+        ArrayList<Food> recipes = new ArrayList<>(); // arraylist full of ingredients
+
+        ArrayList<Food> meals = new ArrayList<>(); // arraylist full of meals
+
+
 
         String line = "";
 

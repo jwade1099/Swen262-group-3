@@ -77,6 +77,7 @@ public class Main {
         String command = scanner.nextLine();
         if(command.equals("yes")){
             System.out.println("congradulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minuts long. Started on: " + WORKOUT.getTime_date());
+            System.out.println("total amount of calories burned: " + WORKOUT.getIntensity()*WORKOUT.getDuration() );
         }
         //add workout to personal history
         USER.getDailyInfo().addWorkout(WORKOUT);
@@ -133,15 +134,21 @@ public class Main {
             login(scanner);
 
             // Prompt the user to choose weight goal
-            //goal(scanner);
+            goal(scanner);
             System.out.println("Your current daily target calories are: " + USER.getDailyInfo());
 
+
+            //scanner.reset();
             // Ask user if they want to do workout and for how long
             System.out.println("type workout to pick workout");
-            if (scanner.nextLine().equals("workout")) {
-                workout(scanner);
+            String command = scanner.nextLine();
+            if (command.equals("")) {
+                String command2 = scanner.nextLine();
+                if (command2.equals("workout")) {
+                    workout(scanner);
+                }
             }
-
+            System.out.println("Your current daily target calories are now: " + USER.getDailyInfo().getTargetCalories());
             //show stock
             //show meal
             //view goal for the day

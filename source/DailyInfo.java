@@ -33,6 +33,10 @@ public class DailyInfo {
         this.dailyInfo.put("Workouts", new ArrayList<Workout>());
     }
 
+    public int getTargetCalories(){
+        return (int)dailyInfo.get("Target Calories");
+    }
+
     public void getWorkoutHistory(){
         ArrayList<Workout> workouts = (ArrayList<Workout>)this.dailyInfo.get("Workouts");
         for(int i = 0; i < workouts.size(); i++){

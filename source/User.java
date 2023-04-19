@@ -100,6 +100,10 @@ public class User {
         this.dailyInfo.reset(this.weight);
     }
 
+    public void resetPassword(String newPass){
+
+    }
+
     public DailyInfo getDailyInfo(){
         return this.dailyInfo;
     }

@@ -149,9 +149,16 @@ public class Main {
                 }
             }
             System.out.println("Your current daily target calories are now: " + USER.getDailyInfo().getTargetCalories());
-            //show stock
+            // show stock
             //show meal
             //view goal for the day
+
+            //R2
+            //change password
+            System.out.println("enter new password");
+            String newPass = scanner.nextLine();
+            USER.resetPassword(newPass);
+
         }catch(Exception e){
             System.out.println("System exit.");
         }

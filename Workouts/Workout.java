@@ -20,4 +20,24 @@ public class Workout {
         this.time_date = currentDateTime;
     }
 
+    public double getIntensity() {
+        return intensity;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public String getTime_date() {
+        return time_date;
+    }
+
+    @Override
+    public String toString() {
+        return "Workout{" +
+                "duration=" + duration +
+                ", intensity=" + intensity +
+                ", time_date='" + time_date + '\'' +
+                '}';
+    }
 }

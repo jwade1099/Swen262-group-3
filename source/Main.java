@@ -1,5 +1,6 @@
 package source;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import Goals.Goal;
@@ -71,11 +72,35 @@ public class Main {
             WORKOUT = makeNewWorkout("Low");
             System.out.println("you picked a Low workout");
         }
+        //asks to do workout
+        System.out.println("to finish your workout type yes");
+        String command = scanner.nextLine();
+        if(command.equals("yes")){
+            System.out.println("congradulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minuts long. Started on: " + WORKOUT.getTime_date());
+        }
+        //add workout to personal history
+        USER.getDailyInfo().addWorkout(WORKOUT);
+        //show history
+        System.out.println("workout was added to history, to view type History");
+        String commandh = scanner.nextLine();
+        if(commandh.equals("History")) {
+            USER.getDailyInfo().getWorkoutHistory();
+        }
     }
 
     public static Workout makeNewWorkout(String intensity) {
-
-        return new Workout(100, 7.5);
+        DailyInfo map = USER.getDailyInfo();
+        Object currentT = map.getDailyInfo().get("Target Calories");
+        if(intensity.equals("High")){
+            USER.getDailyInfo().setTarget((int)currentT + 600);
+            return new Workout(60,10);
+        }else if(intensity.equals("Medium")){
+            USER.getDailyInfo().setTarget((int)currentT + 450);
+            return new Workout(60,7.5);
+        }else {
+            USER.getDailyInfo().setTarget((int)currentT + 300);
+            return new Workout(60, 5);
+        }
     }
 
     public static User makeNewUser(Scanner scanner, String name) {
@@ -108,15 +133,15 @@ public class Main {
             login(scanner);
 
             // Prompt the user to choose weight goal
-            goal(scanner);
+            //goal(scanner);
             System.out.println("Your current daily target calories are: " + USER.getDailyInfo());
 
             // Ask user if they want to do workout and for how long
-            System.out.println("type workout to workout");
-            String command = scanner.nextLine();
-            if (command.equals("workout")) {
+            System.out.println("type workout to pick workout");
+            if (scanner.nextLine().equals("workout")) {
                 workout(scanner);
             }
+
             //show stock
             //show meal
             //view goal for the day

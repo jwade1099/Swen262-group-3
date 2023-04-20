@@ -11,22 +11,18 @@ import java.util.concurrent.ExecutionException;
 
 
 
-
-
 import Composite.*;
 
-public class meals {
+public class Meals {
 
 
-    public static ArrayList<Food> make_food(ArrayList<String> codes) {
+    public static ArrayList<Food> makeFood(ArrayList<String> codes) {
 
-        codes = new ArrayList<>();
+        // codes = new ArrayList<>();
 
-        codes.add("01002");
+        // codes.add("01002");
 
         ArrayList<Food> recipes = new ArrayList<>(); // arraylist full of ingredients
-
-        ArrayList<Food> meals = new ArrayList<>(); // arraylist full of meals
 
         String line = "";
 
@@ -73,14 +69,14 @@ public class meals {
         e.printStackTrace();  
         }  
         
-
+        System.out.println(recipes.get(0));
 
         return recipes;
     }
 
     public static void main(String[] args) {
         ArrayList<String> codes = new ArrayList<>();
-        make_food(codes);
+        makeFood(codes);
     }
 
 

@@ -1,9 +1,12 @@
 package source;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Goals.Goal;
 import Workouts.Workout;
+import Composite.*;
+
 
 
 public class Main {
@@ -130,6 +133,22 @@ public class Main {
         }
     }
 
+    public static ArrayList<Food> makeNewFood() {
+
+        ArrayList<String> codes = new ArrayList<>();
+        codes.add("01002");
+
+
+        
+        ArrayList<Food> meal = Meals.makeFood(codes);
+        System.out.println(meal.get(0));
+        Recipe recipe = new Recipe(meal);
+
+        System.out.println("the meal for you consists of " + recipe.getFood() + " and is " + recipe.getCalories());
+
+        return null;
+    }
+
     public static User makeNewUser(Scanner scanner, String name) {
         System.out.print("Enter birthday <YYYY-MM-DD>: ");
         String birthday = scanner.nextLine();
@@ -171,6 +190,12 @@ public class Main {
                         System.out.println(GREEN + "You selected USER HISTORY" + RESET);
                         USER.getPersonalHistory().printHistory();
                         break;
+
+                    case FOOD:
+                        System.out.println(GREEN + "You selected the foods" + RESET);
+                        makeNewFood();
+                        break;
+
                     case LOGOUT:
                         System.out.println(GREEN + "Logging out..." + RESET);
                         loggedIn = false;

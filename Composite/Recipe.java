@@ -16,6 +16,10 @@ public class Recipe implements Food {
 
     @Override
     public double getCalories() {
+        calories = 0;
+        for (Food food : foods) {
+            calories += food.getCalories();
+        }
         return calories;
     }
 

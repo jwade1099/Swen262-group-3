@@ -139,7 +139,6 @@ public class Main {
         int weight = scanner.nextInt();
         scanner.nextLine();
 
-        scanner.close();
         return new User(name, height, weight, birthday);
     }
 

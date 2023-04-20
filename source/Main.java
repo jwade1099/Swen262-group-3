@@ -1,12 +1,9 @@
 package source;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import Goals.Goal;
 import Workouts.Workout;
-import org.junit.platform.console.shadow.picocli.CommandLine;
 
 
 public class Main {
@@ -49,7 +46,7 @@ public class Main {
 
                 // if command is to create new user, prompt to make new user with given name
                 if (command.equals("C")) {
-                    USER = makeNewUser(username);
+                    USER = makeNewUser(scanner, username);
                     login.add_user(USER, password);
                 }
                 try {
@@ -131,8 +128,7 @@ public class Main {
         }
     }
 
-    public static User makeNewUser(String name) {
-        Scanner scanner = new Scanner(System.in);
+    public static User makeNewUser(Scanner scanner, String name) {
         System.out.print("Enter birthday <YYYY-MM-DD>: ");
         String birthday = scanner.nextLine();
 
@@ -141,8 +137,8 @@ public class Main {
 
         System.out.print("Enter weight <Kg>: ");
         int weight = scanner.nextInt();
+        scanner.nextLine();
 
-        scanner.close();
         return new User(name, height, weight, birthday);
     }
 

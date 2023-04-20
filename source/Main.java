@@ -92,7 +92,7 @@ public class Main {
                 case "V":
                     Goal goal = USER.getGoal();
                     System.out.println(GREEN + "Your current goal is to " + goal.getState() + "Kg.");
-                    System.out.println("Your current daily target calories are: " + goal.getTargetCalories() + RESET);
+                    System.out.println("Your current daily target calories is: " + goal.getTargetCalories() + " calories." + RESET);
                     break;
                 case "S":
                     newGoal(scanner);
@@ -131,7 +131,7 @@ public class Main {
                 System.out.println("you picked a Low workout");
             }
         }
-        System.out.println("congratulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minuets long. Started on: " + WORKOUT.getTime_date());
+        System.out.println("congratulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minutes long. Started on: " + WORKOUT.getTime_date());
         System.out.println("total amount of calories burned: " + WORKOUT.getIntensity() * WORKOUT.getDuration());
 
         //add workout to personal history

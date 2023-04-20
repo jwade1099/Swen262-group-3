@@ -1,3 +1,6 @@
+/**
+ * @author Paolo Pop
+ */
 package Goals;
 
 import source.User;

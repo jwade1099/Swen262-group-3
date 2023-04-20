@@ -1,3 +1,6 @@
+/**
+ * @author Paolo Pop
+ */
 package Goals;
 
 public class LoseWeight implements GoalsState {

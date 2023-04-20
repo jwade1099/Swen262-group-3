@@ -18,7 +18,7 @@ import Composite.*;
 public class meals {
 
 
-    public static ArrayList<Food> low_food() {
+    public static ArrayList<Food> make_food() {
 
         ArrayList<String> codes = new ArrayList<>();
 
@@ -35,13 +35,16 @@ public class meals {
             BufferedReader br = new BufferedReader(new FileReader("ingredients.csv"));  
             while ((line = br.readLine()) != null) {  
                 if (!line.contains("\"")) continue;
+               
             String[] foodDetails1 = line.split("\"");    // seperates using a quotes to get the name
 
-            String description = foodDetails1[1]; // takes the first idnex which is the description
+            String description = foodDetails1[1]; // takes the first index which is the description
 
             String newLine = line.replace(description, " "); // makes new line without the string of the name
 
             String[] foodDetails2 = newLine.split(",");    // seperates using a comma
+
+            if (!codes.contains(foodDetails2[0])) continue; // continues if the desired code is not in
 
             double calories = 0;
             try {
@@ -53,8 +56,15 @@ public class meals {
 
 
 
-            System.out.println("Description: " + description);
-            System.out.println("calories:" + calories);
+            // System.out.println("Description: " + description);
+            // System.out.println("calories:" + calories);
+
+            Ingredients food = new Ingredients(calories, description);
+
+            System.out.println(food.getName());
+            System.out.println(food.getCalories());
+
+            recipes.add(food); // arraylist of ingredients which makes a recipe
 
         }  
 
@@ -71,7 +81,7 @@ public class meals {
     }
 
     public static void main(String[] args) {
-        low_food();
+        make_food();
     }
 
 

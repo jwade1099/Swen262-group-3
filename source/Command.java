@@ -7,6 +7,7 @@ public enum Command {
     LOGOUT("L"),
     EXIT("E"),
     USER_HISTORY("U"),
+    FOOD("F"),
     DEFAULT("");
 
     public final String command;

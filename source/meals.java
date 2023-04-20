@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
-import com.opencsv.*;
+
 
 
 
@@ -18,9 +18,9 @@ import Composite.*;
 public class meals {
 
 
-    public static ArrayList<Food> make_food() {
+    public static ArrayList<Food> make_food(ArrayList<String> codes) {
 
-        ArrayList<String> codes = new ArrayList<>();
+        codes = new ArrayList<>();
 
         codes.add("01002");
 
@@ -54,8 +54,6 @@ public class meals {
                 continue;
             }
 
-
-
             // System.out.println("Description: " + description);
             // System.out.println("calories:" + calories);
 
@@ -81,7 +79,8 @@ public class meals {
     }
 
     public static void main(String[] args) {
-        make_food();
+        ArrayList<String> codes = new ArrayList<>();
+        make_food(codes);
     }
 
 

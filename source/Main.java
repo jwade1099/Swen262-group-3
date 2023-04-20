@@ -17,6 +17,7 @@ public class Main {
             <G>-To select a weight goal.
             <W>-To select workout intensity.
             <U>-To see user history.
+            <F>-To get foods
             <L>-To log out.
             <E>-To exit.
             >>\s""";
@@ -70,6 +71,7 @@ public class Main {
             case "W" -> Command.WORKOUT;
             case "U" -> Command.USER_HISTORY;
             case "L" -> Command.LOGOUT;
+            case "F" -> Command.FOOD;
             case "E" -> Command.EXIT;
             default -> Command.DEFAULT;
         };

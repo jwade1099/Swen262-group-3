@@ -8,6 +8,8 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
 public class login {
+    public static final String GREEN = "\u001B[32m";
+    public static final String RESET = "\u001B[0m";
 
     public static void add_user(User user, String password) {
         JSONObject userJSON = new JSONObject();
@@ -59,14 +61,13 @@ public class login {
 
 
                 if (user1.equals(username) && pass1.equals(hashedPassword)) {
-                    System.out.println("User found");
+                    System.out.println(GREEN + "User found" + RESET);
                     int height = (int) (long) user.get("Height");
                     int weight = (int) (long) user.get("Weight");
                     String birthday = (String) user.get("Birthday");
                     return new User(user1, height, weight, birthday);
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

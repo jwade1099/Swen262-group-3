@@ -7,6 +7,7 @@ import Workouts.Workout;
 
 
 public class Main {
+    public static final String CYAN = "\u001B[36m";
     public static final String GREEN = "\u001B[32m";
     public static final String RED = "\u001B[31m";
     public static final String RESET = "\u001B[0m";
@@ -36,6 +37,7 @@ public class Main {
                 >>\s""";
         String command = "";
         while (!command.equals("E")) {
+            System.out.println(CYAN + "/////// LOGIN MENU ///////" + RESET);
             System.out.print(c);
             command = scanner.nextLine();
             if (command.equals("L") || command.equals("C")) {
@@ -62,6 +64,7 @@ public class Main {
     }
 
     public static Command printCommands(Scanner scanner) {
+        System.out.println(CYAN + "/////// MAIN MENU ///////" + RESET);
         System.out.print(COMMANDS);
 
         return switch (scanner.nextLine()) {
@@ -187,15 +190,15 @@ public class Main {
                     case HELP:
                         break;
                     case GOAL:
-                        System.out.println(GREEN + "You selected GOALS" + RESET);
+                        System.out.println(CYAN + "/////// GOALS ///////" + RESET);
                         goal(sc);
                         break;
                     case WORKOUT:
-                        System.out.println(GREEN + "You selected WORKOUTS" + RESET);
+                        System.out.println(CYAN + "/////// WORKOUTS ///////" + RESET);
                         workout(sc);
                         break;
                     case USER_HISTORY:
-                        System.out.println(GREEN + "You selected USER HISTORY" + RESET);
+                        System.out.println(CYAN + "/////// USER HISTORY ///////" + RESET);
                         USER.getPersonalHistory().printHistory();
                         break;
                     case LOGOUT:

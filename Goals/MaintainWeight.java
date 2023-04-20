@@ -1,3 +1,6 @@
+/**
+ * @author Paolo Pop
+ */
 package Goals;
 
 public class MaintainWeight implements GoalsState {
@@ -11,13 +14,20 @@ public class MaintainWeight implements GoalsState {
     public void handleSetCalories() {
         double baseCalories = context.setBaseCalories();
         double weightDifference = context.getWeightDifference();
-        if (weightDifference >= 2.27) {
+        if (weightDifference <= -2.27) {
             context.setState(new LoseWeight(context));
             context.setCalories();
-        } else if (weightDifference <= - 2.27){
+            return;
+        } else if (weightDifference >= 2.27) {
             context.setState(new GainWeight(context));
             context.setCalories();
+            return;
         }
-            context.setTargetCalories(baseCalories);
+        context.setTargetCalories(baseCalories);
+    }
+
+    @Override
+    public String toString() {
+        return "maintain weight around " + (int) context.getWeightGoal();
     }
 }

@@ -1,6 +1,7 @@
 package source;
 
 import Goals.Goal;
+import Goals.MaintainWeight;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -20,6 +21,7 @@ public class User {
     private ShoppingList list;
     private DailyInfo dailyInfo;
     private PersonalHistory history;
+    private Goal goal;
 
 
     public User(String name, int height, int weight, String birthday) {
@@ -32,7 +34,20 @@ public class User {
         this.stock = new Stock(list, this);
         this.dailyInfo = new DailyInfo(this.weight);
         this.history = new PersonalHistory();
+        this.goal = new Goal(this, weight);
+    }
 
+    public User(String name, int height, int weight, String birthday, int weightGoal) {
+        this.name = name;
+        this.height = height;
+        this.weight = weight;
+        this.birthday = birthday;
+        this.age = calculateAge(birthday);
+        this.list = new ShoppingList(this);
+        this.stock = new Stock(list, this);
+        this.dailyInfo = new DailyInfo(this.weight);
+        this.history = new PersonalHistory();
+        this.goal = new Goal(this, weightGoal);
     }
 
     private int calculateAge(String birthday) {
@@ -102,6 +117,20 @@ public class User {
 
     public void resetPassword(String newPass){
 
+    }
+
+    public Goal getGoal(){
+        return this.goal;
+    }
+
+    public void setWeightGoal(int weightGoal){
+        this.goal.setWeightGoal(weightGoal);
+        this.goal.setCalories();
+        getDailyInfo().setTarget(this.goal.getTargetCalories());
+    }
+
+    public int getTargetCalories(){
+        return (int) this.goal.getTargetCalories();
     }
 
     public DailyInfo getDailyInfo(){

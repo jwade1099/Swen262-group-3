@@ -10,6 +10,7 @@ import Composite.*;
 
 
 public class Main {
+    public static final String CYAN = "\u001B[36m";
     public static final String GREEN = "\u001B[32m";
     public static final String RED = "\u001B[31m";
     public static final String RESET = "\u001B[0m";
@@ -17,7 +18,7 @@ public class Main {
     private static final String COMMANDS = """
             Please choose a command out of the following:
             <H>-To show commands again.
-            <G>-To select a weight goal.
+            <G>-To view goals menu.
             <W>-To select workout intensity.
             <U>-To see user history.
             <F>-To get foods
@@ -29,7 +30,6 @@ public class Main {
 
     private static User USER;
     private static Workout WORKOUT;
-    private static Goal GOAL;
 
     public static void login(Scanner scanner) {
         String c = """
@@ -40,6 +40,7 @@ public class Main {
                 >>\s""";
         String command = "";
         while (!command.equals("E")) {
+            System.out.println(CYAN + "/////// LOGIN MENU ///////" + RESET);
             System.out.print(c);
             command = scanner.nextLine();
             if (command.equals("L") || command.equals("C")) {
@@ -56,8 +57,8 @@ public class Main {
                 try {
                     USER = login.authenticate(username, password);
                     System.out.println("Hello " + USER.getName() + "!!\n");
-                    command = "E";
                     loggedIn = true;
+                    break;
                 } catch (NullPointerException e) {
                     System.out.println(RED + "Wrong password or username.\n" + RESET);
                 }
@@ -66,6 +67,7 @@ public class Main {
     }
 
     public static Command printCommands(Scanner scanner) {
+        System.out.println(CYAN + "/////// MAIN MENU ///////" + RESET);
         System.out.print(COMMANDS);
 
         return switch (scanner.nextLine()) {
@@ -81,13 +83,41 @@ public class Main {
     }
 
     public static void goal(Scanner scanner) {
+        String command = "";
+        while (!command.equals("B")) {
+            String commands = """
+                    Please choose a command out of the following:
+                    <V>-To view current weight goal.
+                    <S>-To set new weight goal.
+                    <B>-To return to main menu.
+                    >>\s""";
+            System.out.print(commands);
+            command = scanner.nextLine();
+
+            switch (command) {
+                case "V":
+                    Goal goal = USER.getGoal();
+                    System.out.println(GREEN + "Your current goal is to " + goal.getState() + "Kg.");
+                    System.out.println("Your current daily target calories is: " + goal.getTargetCalories() + " calories." + RESET);
+                    break;
+                case "S":
+                    newGoal(scanner);
+                    break;
+                case "B":
+                    break;
+                default:
+                    System.out.println("Invalid command.");
+                    break;
+            }
+        }
+    }
+
+    public static void newGoal(Scanner scanner) {
         System.out.println("Please choose a weight goal. (Current weight: " + USER.getWeight() + ")");
         int weightGoal = scanner.nextInt();
         scanner.nextLine();
-        GOAL = new Goal(USER, weightGoal);
-        GOAL.setCalories();
-        USER.getDailyInfo().setTarget((int) GOAL.getTargetCalories());
-        System.out.println("Your current daily target calories are: " + USER.getDailyInfo().getTargetCalories());
+        USER.setWeightGoal(weightGoal);
+        System.out.println(GREEN + "Your current daily target calories are: " + USER.getGoal().getTargetCalories() + RESET);
     }
 
     public static void workout(Scanner scanner) {
@@ -107,7 +137,7 @@ public class Main {
                 System.out.println("you picked a Low workout");
             }
         }
-        System.out.println("congratulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minuets long. Started on: " + WORKOUT.getTime_date());
+        System.out.println("congratulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minutes long. Started on: " + WORKOUT.getTime_date());
         System.out.println("total amount of calories burned: " + WORKOUT.getIntensity() * WORKOUT.getDuration());
 
         //add workout to personal history
@@ -179,15 +209,15 @@ public class Main {
                     case HELP:
                         break;
                     case GOAL:
-                        System.out.println(GREEN + "You selected GOALS" + RESET);
+                        System.out.println(CYAN + "/////// GOALS ///////" + RESET);
                         goal(sc);
                         break;
                     case WORKOUT:
-                        System.out.println(GREEN + "You selected WORKOUTS" + RESET);
+                        System.out.println(CYAN + "/////// WORKOUTS ///////" + RESET);
                         workout(sc);
                         break;
                     case USER_HISTORY:
-                        System.out.println(GREEN + "You selected USER HISTORY" + RESET);
+                        System.out.println(CYAN + "/////// USER HISTORY ///////" + RESET);
                         USER.getPersonalHistory().printHistory();
                         break;
 

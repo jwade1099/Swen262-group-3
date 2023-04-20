@@ -108,8 +108,8 @@ public class Main {
             login(scanner);
 
             // Prompt the user to choose weight goal
-            goal(scanner);
-            System.out.println("Your current daily target calories are: " + USER.getDailyInfo());
+            // goal(scanner);
+            // System.out.println("Your current daily target calories are: " + USER.getDailyInfo());
 
             // Ask user if they want to do workout and for how long
             System.out.println("type workout to workout");

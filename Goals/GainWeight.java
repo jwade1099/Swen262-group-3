@@ -15,7 +15,13 @@ public class GainWeight implements GoalsState {
         if (context.getCurrentWeight() >= context.getWeightGoal()) {
             context.setState(new MaintainWeight(context));
             context.setCalories();
+            return;
         }
         context.setTargetCalories(baseCalories + surplus);
+    }
+
+    @Override
+    public String toString() {
+        return "gain weight up to " + (int) context.getWeightGoal();
     }
 }

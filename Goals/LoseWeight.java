@@ -14,7 +14,13 @@ public class LoseWeight implements GoalsState {
         if(context.getCurrentWeight() <= context.getWeightGoal()){
             context.setState(new MaintainWeight(context));
             context.setCalories();
+            return;
         }
         context.setTargetCalories(baseCalories - deficit);
+    }
+
+    @Override
+    public String toString() {
+        return "lose weight down to " + (int) context.getWeightGoal();
     }
 }

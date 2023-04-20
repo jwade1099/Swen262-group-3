@@ -7,12 +7,6 @@ public class Goal {
     private final User user;
 
     /**
-     * user's initial weight.
-     */
-    private double initialWeight;
-
-
-    /**
      * user's weight goal.
      */
     private double weightGoal;
@@ -21,12 +15,10 @@ public class Goal {
      * user's daily target calories.
      */
     private double targetCalories;
-//    private double workoutCalories;
 
 
     public Goal(source.User user, int weightGoal) {
         this.user = user;
-        this.initialWeight = user.getWeight();
         this.weightGoal = weightGoal;
         this.state = new MaintainWeight(this);
 
@@ -36,13 +28,10 @@ public class Goal {
 
 
     /**
-     * Set the user's current weight as the {@link #initialWeight}, and the
-     *
      * @param state to set as new {@link #state}.
      */
     public void setState(GoalsState state) {
         this.state = state;
-        this.initialWeight = user.getWeight();
     }
 
 
@@ -66,7 +55,7 @@ public class Goal {
      * Set the base calories a person has to eat daily based on their weight height and age
      */
     public double setBaseCalories() {
-        return (9.99 * user.getWeight()) + (6.25 * user.getHeight()) - (4.92 * user.getAge()) - 83;
+        return ((9.99 * user.getWeight()) + (6.25 * user.getHeight()) - (4.92 * user.getAge()) - 83) * 1.35;
     }
 
 
@@ -75,6 +64,7 @@ public class Goal {
      */
     public void setWeightGoal(double weightGoal) {
         this.weightGoal = weightGoal;
+
     }
 
     /**
@@ -95,16 +85,19 @@ public class Goal {
     /**
      * @return the current {@link #targetCalories}.
      */
-    public double getTargetCalories() {
-        return targetCalories;
+    public int getTargetCalories() {
+        return (int) targetCalories;
     }
 
 
-
     /**
-     * @return the difference between the user's current weight and the {@link #initialWeight}.
+     * @return the difference between the user's current weight and the weight goal.
      */
     public double getWeightDifference() {
-        return user.getWeight() - initialWeight;
+        return getWeightGoal() - getCurrentWeight();
+    }
+
+    public GoalsState getState() {
+        return this.state;
     }
 }

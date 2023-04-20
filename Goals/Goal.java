@@ -80,8 +80,8 @@ public class Goal {
     /**
      * @return the current {@link #weightGoal}.
      */
-    public double getWeightGoal() {
-        return weightGoal;
+    public int getWeightGoal() {
+        return (int) weightGoal;
     }
 
 

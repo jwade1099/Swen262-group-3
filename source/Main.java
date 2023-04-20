@@ -53,6 +53,7 @@ public class Main {
                 }
                 try {
                     USER = login.authenticate(username, password);
+                    USER.getGoal().setCalories();
                     System.out.println("Hello " + USER.getName() + "!!\n");
                     loggedIn = true;
                     break;
@@ -64,7 +65,8 @@ public class Main {
     }
 
     public static Command printCommands(Scanner scanner) {
-        System.out.println(CYAN + "/////// MAIN MENU ///////" + RESET);
+        System.out.println(CYAN + "/////// MAIN MENU ///////");
+        System.out.println(GREEN + "Current user: " + USER.getName() + RESET);
         System.out.print(COMMANDS);
 
         return switch (scanner.nextLine()) {
@@ -110,7 +112,7 @@ public class Main {
     }
 
     public static void newGoal(Scanner scanner) {
-        System.out.println("Please choose a weight goal. (Current weight: " + USER.getWeight() + ")");
+        System.out.print("Please choose a weight goal. (Current weight: " + USER.getWeight() + ")\n>> ");
         int weightGoal = scanner.nextInt();
         scanner.nextLine();
         USER.setWeightGoal(weightGoal);
@@ -202,7 +204,7 @@ public class Main {
                         USER.getPersonalHistory().printHistory();
                         break;
                     case LOGOUT:
-                        System.out.println(GREEN + "Logging out..." + RESET);
+                        login.logOut(USER.getName(), USER.getGoal().getWeightGoal());
                         loggedIn = false;
                         login(sc);
                         command = loggedIn ? Command.DEFAULT : Command.EXIT;

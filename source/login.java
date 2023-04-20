@@ -1,7 +1,9 @@
 package source;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.json.simple.*;
@@ -20,7 +22,7 @@ public class login {
         userJSON.put("Weight", user.getWeight()); // user weight
         userJSON.put("Birthday", user.getBirthday()); // user birthday
         userJSON.put("weightGoal", user.getGoal().getWeightGoal()); // user weight goal
- 
+
         JSONObject userObject = new JSONObject();
         userObject.put("user", userJSON);
 
@@ -41,7 +43,7 @@ public class login {
         }
     }
 
-    public static User authenticate(String username, String password) throws NullPointerException{
+    public static User authenticate(String username, String password) throws NullPointerException {
         String hashedPassword = String.valueOf(password.hashCode());
 
         JSONParser parser = new JSONParser(); // makes a new parser 
@@ -74,6 +76,36 @@ public class login {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void logOut(String username, int weightGoal) {
+        JSONParser parser = new JSONParser(); // makes a new parser
+        try (FileReader reader = new FileReader("source/user.json")) { // reads the file
+            Object obj = parser.parse(reader);
+
+            JSONArray userList = (JSONArray) obj;
+
+            for (int i = 0; i < userList.size(); i++) {
+                JSONObject element = (JSONObject) userList.get(i);
+                JSONObject user = (JSONObject) element.get("user");
+
+                String user1 = (String) user.get("username");
+
+                if (user1.equals(username)){
+                    user.remove("weightGoal");
+                    System.out.println(GREEN + "Logging out..." + RESET);
+                    user.put("weightGoal", weightGoal);
+                    FileWriter file = new FileWriter("source/user.json");
+                    file.write(userList.toJSONString());
+                    file.flush();
+                    file.close();
+                    break;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

@@ -1,9 +1,12 @@
 package source;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import Goals.Goal;
 import Workouts.Workout;
+
 
 
 public class Main {
@@ -139,6 +142,7 @@ public class Main {
         int weight = scanner.nextInt();
         scanner.nextLine();
 
+        scanner.close();
         return new User(name, height, weight, birthday);
     }
 

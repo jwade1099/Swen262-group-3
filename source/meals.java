@@ -40,7 +40,7 @@ public class meals {
                 recipes.add(ingredient);
 
             }
-            }  
+        }  
 
             br.close();
         }   

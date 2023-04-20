@@ -14,7 +14,7 @@ public class Main {
     private static final String COMMANDS = """
             Please choose a command out of the following:
             <H>-To show commands again.
-            <G>-To select a weight goal.
+            <G>-To view goals menu.
             <W>-To select workout intensity.
             <U>-To see user history.
             <F>-To get foods
@@ -26,7 +26,6 @@ public class Main {
 
     private static User USER;
     private static Workout WORKOUT;
-    private static Goal GOAL;
 
     public static void login(Scanner scanner) {
         String c = """
@@ -78,13 +77,41 @@ public class Main {
     }
 
     public static void goal(Scanner scanner) {
+        String command = "";
+        while (!command.equals("B")) {
+            String commands = """
+                    Please choose a command out of the following:
+                    <V>-To view current weight goal.
+                    <S>-To set new weight goal.
+                    <B>-To return to main menu.
+                    >>\s""";
+            System.out.print(commands);
+            command = scanner.nextLine();
+
+            switch (command) {
+                case "V":
+                    Goal goal = USER.getGoal();
+                    System.out.println(GREEN + "Your current goal is to " + goal.getState() + "Kg.");
+                    System.out.println("Your current daily target calories are: " + goal.getTargetCalories() + RESET);
+                    break;
+                case "S":
+                    newGoal(scanner);
+                    break;
+                case "B":
+                    break;
+                default:
+                    System.out.println("Invalid command.");
+                    break;
+            }
+        }
+    }
+
+    public static void newGoal(Scanner scanner) {
         System.out.println("Please choose a weight goal. (Current weight: " + USER.getWeight() + ")");
         int weightGoal = scanner.nextInt();
         scanner.nextLine();
-        GOAL = new Goal(USER, weightGoal);
-        GOAL.setCalories();
-        USER.getDailyInfo().setTarget((int) GOAL.getTargetCalories());
-        System.out.println("Your current daily target calories are: " + USER.getDailyInfo().getTargetCalories());
+        USER.setWeightGoal(weightGoal);
+        System.out.println(GREEN + "Your current daily target calories are: " + USER.getGoal().getTargetCalories() + RESET);
     }
 
     public static void workout(Scanner scanner) {

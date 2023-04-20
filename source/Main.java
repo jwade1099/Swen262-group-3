@@ -1,5 +1,6 @@
 package source;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -80,6 +81,7 @@ public class Main {
     public static void goal(Scanner scanner) {
         System.out.println("Please choose a weight goal. (Current weight: " + USER.getWeight() + ")");
         int weightGoal = scanner.nextInt();
+        scanner.nextLine();
         GOAL = new Goal(USER, weightGoal);
         GOAL.setCalories();
         USER.getDailyInfo().setTarget((int) GOAL.getTargetCalories());
@@ -161,7 +163,7 @@ public class Main {
                         break;
                     case GOAL:
                         System.out.println(GREEN + "You selected GOALS" + RESET);
-//                        goal(sc);
+                        goal(sc);
                         break;
                     case WORKOUT:
                         System.out.println(GREEN + "You selected WORKOUTS" + RESET);
@@ -173,7 +175,7 @@ public class Main {
                         USER.getDailyInfo().getWorkoutHistory();
                         break;
                     case LOGOUT:
-                        System.out.println("Logging out...");
+                        System.out.println(GREEN + "Logging out..." + RESET);
                         loggedIn = false;
                         login(sc);
                         command = loggedIn ? Command.DEFAULT : Command.EXIT;

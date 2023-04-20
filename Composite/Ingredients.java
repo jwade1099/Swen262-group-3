@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ingredients implements Food {
-    private double calories;
     private String name;
+    private double calories;
 
 
     public Ingredients(double calories, String name) {
@@ -23,6 +23,10 @@ public class Ingredients implements Food {
         List<Food> foods = new ArrayList<>();
         foods.add(this);
         return foods;
+    }
+
+    public String getName() {
+        return name;
     }
 
 

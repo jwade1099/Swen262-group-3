@@ -6,6 +6,12 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.concurrent.ExecutionException;
+
+import com.opencsv.*;
+
+
+
 
 import Composite.*;
 
@@ -22,24 +28,34 @@ public class meals {
 
         ArrayList<Food> meals = new ArrayList<>(); // arraylist full of meals
 
-
-
         String line = "";
 
         try   {  
         //parsing a CSV file into BufferedReader class constructor  
             BufferedReader br = new BufferedReader(new FileReader("ingredients.csv"));  
             while ((line = br.readLine()) != null) {  
-            String[] foodDetails = line.split(",");    // seperates using a comma
-            if (codes.contains(foodDetails[0])) {
-                System.out.println(foodDetails[0]);
+                if (!line.contains("\"")) continue;
+            String[] foodDetails1 = line.split("\"");    // seperates using a quotes to get the name
 
-                int calories = Integer.parseInt(foodDetails[3]) ;
-                String name = foodDetails[1];
-                Ingredients ingredient = new Ingredients(calories, name);
-                recipes.add(ingredient);
+            String description = foodDetails1[1]; // takes the first idnex which is the description
 
+            String newLine = line.replace(description, " "); // makes new line without the string of the name
+
+            String[] foodDetails2 = newLine.split(",");    // seperates using a comma
+
+            double calories = 0;
+            try {
+                calories = Double.parseDouble(foodDetails2[3].replace(",", ""));
+
+            } catch(NumberFormatException e) {
+                continue;
             }
+
+
+
+            System.out.println("Description: " + description);
+            System.out.println("calories:" + calories);
+
         }  
 
             br.close();

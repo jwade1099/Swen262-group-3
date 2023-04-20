@@ -19,6 +19,7 @@ public class login {
         userJSON.put("Height", user.getHeight()); // user height
         userJSON.put("Weight", user.getWeight()); // user weight
         userJSON.put("Birthday", user.getBirthday()); // user birthday
+        userJSON.put("weightGoal", user.getGoal().getWeightGoal()); // user weight goal
  
         JSONObject userObject = new JSONObject();
         userObject.put("user", userJSON);
@@ -34,13 +35,13 @@ public class login {
             file.write(userList.toJSONString());
             file.flush();
             file.close();
-            System.out.println("New user created");
+            System.out.println(GREEN + "New user created" + RESET);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static User authenticate(String username, String password) {
+    public static User authenticate(String username, String password) throws NullPointerException{
         String hashedPassword = String.valueOf(password.hashCode());
 
         JSONParser parser = new JSONParser(); // makes a new parser 
@@ -65,7 +66,8 @@ public class login {
                     int height = (int) (long) user.get("Height");
                     int weight = (int) (long) user.get("Weight");
                     String birthday = (String) user.get("Birthday");
-                    return new User(user1, height, weight, birthday);
+                    int weightGoal = (int) (long) user.get("weightGoal");
+                    return new User(user1, height, weight, birthday, weightGoal);
                 }
             }
         } catch (Exception e) {

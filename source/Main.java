@@ -54,8 +54,8 @@ public class Main {
                 try {
                     USER = login.authenticate(username, password);
                     System.out.println("Hello " + USER.getName() + "!!\n");
-                    command = "E";
                     loggedIn = true;
+                    break;
                 } catch (NullPointerException e) {
                     System.out.println(RED + "Wrong password or username.\n" + RESET);
                 }

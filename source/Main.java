@@ -1,12 +1,9 @@
 package source;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import Goals.Goal;
 import Workouts.Workout;
-
 
 
 public class Main {

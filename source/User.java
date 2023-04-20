@@ -37,6 +37,19 @@ public class User {
         this.goal = new Goal(this, weight);
     }
 
+    public User(String name, int height, int weight, String birthday, int weightGoal) {
+        this.name = name;
+        this.height = height;
+        this.weight = weight;
+        this.birthday = birthday;
+        this.age = calculateAge(birthday);
+        this.list = new ShoppingList(this);
+        this.stock = new Stock(list, this);
+        this.dailyInfo = new DailyInfo(this.weight);
+        this.history = new PersonalHistory();
+        this.goal = new Goal(this, weightGoal);
+    }
+
     private int calculateAge(String birthday) {
         LocalDate dob = LocalDate.parse(birthday);
         age = calculation(dob);

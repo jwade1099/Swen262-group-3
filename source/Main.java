@@ -88,23 +88,23 @@ public class Main {
     public static void workout(Scanner scanner) {
         System.out.println("please choose High, Medium, or Low workout.");
         String inputString = scanner.nextLine();
-        if (inputString.equals("High")) {
-            System.out.println("you picked a High workout");
-            WORKOUT = makeNewWorkout("High");
-        } else if (inputString.equals("Medium")) {
-            WORKOUT = makeNewWorkout("Medium");
-            System.out.println("you picked a Medium workout");
-        } else if (inputString.equals("Low")) {
-            WORKOUT = makeNewWorkout("Low");
-            System.out.println("you picked a Low workout");
+        switch (inputString) {
+            case "High" -> {
+                System.out.println("you picked a High workout");
+                WORKOUT = makeNewWorkout("High");
+            }
+            case "Medium" -> {
+                WORKOUT = makeNewWorkout("Medium");
+                System.out.println("you picked a Medium workout");
+            }
+            case "Low" -> {
+                WORKOUT = makeNewWorkout("Low");
+                System.out.println("you picked a Low workout");
+            }
         }
-        //asks to do workout
-        System.out.println("to finish your workout type yes");
-        String command = scanner.nextLine();
-        if (command.equals("yes")) {
-            System.out.println("congradulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minuts long. Started on: " + WORKOUT.getTime_date());
-            System.out.println("total amount of calories burned: " + WORKOUT.getIntensity() * WORKOUT.getDuration());
-        }
+        System.out.println("congratulations you completed a " + WORKOUT.getIntensity() + " calories/min intensity workout that was " + WORKOUT.getDuration() + " minuets long. Started on: " + WORKOUT.getTime_date());
+        System.out.println("total amount of calories burned: " + WORKOUT.getIntensity() * WORKOUT.getDuration());
+
         //add workout to personal history
         USER.getDailyInfo().addWorkout(WORKOUT);
 
@@ -168,8 +168,7 @@ public class Main {
                         break;
                     case USER_HISTORY:
                         System.out.println(GREEN + "You selected USER HISTORY" + RESET);
-                        System.out.println(RED + "INSERT USER HISTORY LOGIC" + RESET);
-                        USER.getDailyInfo().getWorkoutHistory();
+                        USER.getPersonalHistory().printHistory();
                         break;
                     case LOGOUT:
                         System.out.println(GREEN + "Logging out..." + RESET);

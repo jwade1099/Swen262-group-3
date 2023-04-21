@@ -172,7 +172,7 @@ public class Main {
 
 
         
-        ArrayList<Food> meal = Meals.makeFood(codes);
+        ArrayList<Food> meal = meals.makeFood(codes);
         System.out.println(meal.get(0));
         Recipe recipe = new Recipe(meal);
 
@@ -243,12 +243,15 @@ public class Main {
                 }
             }
         }
-        // show stock
-        //show meal
-        //view goal for the day
 
-        //R2
-        //change password
+//        TODO
+//          show stock
+//          show meal
+//          Add delete user command
+
+//        TODO R2
+//          change password
+
 //            System.out.println("enter new password");
 //            String newPass = scanner.nextLine();
 //            USER.resetPassword(newPass);

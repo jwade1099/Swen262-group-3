@@ -6,6 +6,7 @@ import java.util.Scanner;
 import Goals.Goal;
 import Workouts.Workout;
 import Composite.*;
+import source.Meals;
 
 
 
@@ -172,7 +173,7 @@ public class Main {
 
 
         
-        ArrayList<Food> meal = meals.makeFood(codes);
+        ArrayList<Food> meal = Meals.makeFood(codes);
         System.out.println(meal.get(0));
         Recipe recipe = new Recipe(meal);
 

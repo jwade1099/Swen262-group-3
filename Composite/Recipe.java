@@ -10,7 +10,7 @@ public class Recipe implements Food {
 
     public Recipe(List<Food> foods) {
         this.calories = 0;
-        this.foods = new ArrayList<>();
+        this.foods = foods;
 
     }
 

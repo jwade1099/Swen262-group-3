@@ -2,6 +2,7 @@ package source;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -223,6 +224,8 @@ public class Main {
                         break;
                     case USER_HISTORY:
                         System.out.println(CYAN + "/////// USER HISTORY ///////" + RESET);
+                        Date d = new Date();
+                        USER.resetDaily(d);
                         USER.getPersonalHistory().printHistory();
                         break;
 

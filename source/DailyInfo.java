@@ -48,7 +48,7 @@ public class DailyInfo {
         this.dailyInfo.put("Weight", weight);
     }
 
-    public void addCalories(int calories){
+    public void addCalories(double calories){
         int prevCal = (int) dailyInfo.get("Calories Consumed");
         this.dailyInfo.put("Calories Consumed", prevCal + calories);
     }

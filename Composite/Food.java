@@ -8,5 +8,5 @@ public interface Food {
      * get calories returns calories of the given food item
      */
     double getCalories();
-    List<Food> getFood();
+    String getFood();
 }

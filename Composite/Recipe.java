@@ -6,9 +6,9 @@ import java.util.List;
 public class Recipe implements Food {
 
     private double calories;
-    private List<Food> foods;
+    private List<Ingredients> foods;
 
-    public Recipe(List<Food> foods) {
+    public Recipe(List<Ingredients> foods) {
         this.calories = 0;
         this.foods = foods;
 
@@ -24,8 +24,16 @@ public class Recipe implements Food {
     }
 
     @Override
-    public List<Food> getFood() {
-        return foods;
+    public String getFood() {
+        String foodString = "";
+
+        for (Ingredients ingredient : this.foods) {
+            foodString += (ingredient.getName() + " ");
+
+        }
+        return foodString;
+
+
     }
     
 }

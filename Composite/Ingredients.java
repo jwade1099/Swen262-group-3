@@ -19,10 +19,10 @@ public class Ingredients implements Food {
     }
 
     @Override
-    public List<Food> getFood() {
+    public String getFood() {
         List<Food> foods = new ArrayList<>();
         foods.add(this);
-        return foods;
+        return "foods";
     }
 
     public String getName() {

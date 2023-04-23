@@ -29,8 +29,8 @@ public class Meal implements Food {
     }
 
     @Override
-    public List<Food> getFood() {
-        return foods;
+    public String getFood() {
+        return foods.toString();
     }
     
 }

@@ -16,13 +16,13 @@ import Composite.*;
 public class meals {
 
 
-    public static ArrayList<Food> makeFood(ArrayList<String> codes) {
+    public static ArrayList<Ingredients> makeFood(ArrayList<String> codes) {
 
         // codes = new ArrayList<>();
 
         // codes.add("01002");
 
-        ArrayList<Food> recipes = new ArrayList<>(); // arraylist full of ingredients
+        ArrayList<Ingredients> recipes = new ArrayList<>(); // arraylist full of ingredients
 
         String line = "";
 
@@ -55,8 +55,8 @@ public class meals {
 
             Ingredients food = new Ingredients(calories, description);
 
-            System.out.println(food.getName());
-            System.out.println(food.getCalories());
+            // System.out.println(food.getName());
+            // System.out.println(food.getCalories());
 
             recipes.add(food); // arraylist of ingredients which makes a recipe
 
@@ -69,19 +69,19 @@ public class meals {
         e.printStackTrace();  
         }  
         
-        System.out.println(recipes.get(0));
+        // System.out.println(recipes.get(0));
 
         return recipes;
     }
 
-    public static void main(String[] args) {
-        ArrayList<String> codes = new ArrayList<>();
-        ArrayList<Food> recipes = makeFood(codes);
+    // public static void main(String[] args) {
+    //     ArrayList<String> codes = new ArrayList<>();
+    //     ArrayList<Food> recipes = makeFood(codes);
 
-        for (Food recipe : recipes) {
-            System.out.println(recipe.getCalories());
-        }
-    }
+    //     for (Food recipe : recipes) {
+    //         System.out.println(recipe.getCalories());
+    //     }
+    // }
 
 
     

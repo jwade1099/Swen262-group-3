@@ -46,7 +46,7 @@ public class Composite {
         // }
 
 
-        Food recipe1 = new Recipe(foodsList);
+        // Food recipe1 = new Recipe(foodsList);
     
     }
 }

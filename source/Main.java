@@ -174,15 +174,15 @@ public class Main {
 
         ArrayList<String> codes = new ArrayList<>();
         codes.add("01002");
+        codes.add("01010");
 
         
-        ArrayList<Food> meal = meals.makeFood(codes);
-        System.out.println(meal.get(0));
+        ArrayList<Ingredients> meal = meals.makeFood(codes);
         Recipe recipe = new Recipe(meal);
 
-        List<Food> foods = recipe.getFood();
 
-        System.out.println("the meal for you consists of " + foods.toString() + " and is " + recipe.getCalories() + " calories");
+        System.out.println("the meal for you consists of " + recipe.getFood() + " and is " + recipe.getCalories() + " calories");
+        USER.getDailyInfo().addCalories(recipe.getCalories());
 
         return null;
     }

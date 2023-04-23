@@ -1,12 +1,13 @@
 package source;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Goals.Goal;
 import Workouts.Workout;
 import Composite.*;
-import source.Meals;
 
 
 
@@ -171,13 +172,14 @@ public class Main {
         ArrayList<String> codes = new ArrayList<>();
         codes.add("01002");
 
-
         
-        ArrayList<Food> meal = Meals.makeFood(codes);
+        ArrayList<Food> meal = meals.makeFood(codes);
         System.out.println(meal.get(0));
         Recipe recipe = new Recipe(meal);
 
-        System.out.println("the meal for you consists of " + recipe.getFood() + " and is " + recipe.getCalories());
+        List<Food> foods = recipe.getFood();
+
+        System.out.println("the meal for you consists of " + foods.toString() + " and is " + recipe.getCalories() + " calories");
 
         return null;
     }

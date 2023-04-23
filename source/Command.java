@@ -8,6 +8,7 @@ public enum Command {
     EXIT("E"),
     USER_HISTORY("U"),
     FOOD("F"),
+    STOCK("I"),
     DEFAULT("");
 
     public final String command;

@@ -25,6 +25,7 @@ public class Main {
             <W>-To select workout intensity.
             <U>-To see user history.
             <F>-To get foods
+            <I>-To get stock
             <L>-To log out.
             <E>-To exit.
             >>\s""";
@@ -83,6 +84,7 @@ public class Main {
             case "L" -> Command.LOGOUT;
             case "F" -> Command.FOOD;
             case "E" -> Command.EXIT;
+            case "I" -> Command.STOCK;
             default -> Command.DEFAULT;
         };
     }
@@ -232,6 +234,11 @@ public class Main {
                     case FOOD:
                         System.out.println(GREEN + "You selected the foods" + RESET);
                         makeNewFood();
+                        break;
+
+                    case STOCK:
+                        Stock s = USER.getUserStock();
+                        System.out.println(s.getStock());
                         break;
 
                     case LOGOUT:

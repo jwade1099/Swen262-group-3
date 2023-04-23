@@ -144,7 +144,9 @@ public class User {
         Stock s = o.getUserStock();
         ShoppingList l = o.getUserShoppingList();
 
+        System.out.println("Stock");
         System.out.println(s.getStock());
+        System.out.println("---------------");
         System.out.println(l.getShoppingList());
 
         Date d = new Date();

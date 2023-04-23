@@ -26,6 +26,7 @@ public class PersonalHistory {
             DailyInfo val = element.getValue();
 
             System.out.println("{" + key + " : {" + val.toString() + "}}");
+            System.out.println("");
         }
     }
 

@@ -229,6 +229,8 @@ public class Main {
                         Date d = new Date();
                         USER.resetDaily(d);
                         USER.getPersonalHistory().printHistory();
+                        System.out.println("Workout History: ");
+                        USER.getDailyInfo().getWorkoutHistory();
                         break;
 
                     case FOOD:

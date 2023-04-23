@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 import Composite.*;
 
-public class Meals {
+public class meals {
 
 
     public static ArrayList<Food> makeFood(ArrayList<String> codes) {

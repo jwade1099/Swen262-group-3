@@ -1,5 +1,8 @@
 package source;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class Stock {
@@ -11,6 +14,18 @@ public class Stock {
         this.stock = new HashMap<>();
         this.list = list;
         this.user = user;
+        String line = "";
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader("ingredients.csv"));
+            while((line = reader.readLine()) != null){
+                String[] info = line.split(",");
+                if(!info[0].equals("NDB_No")){
+                    this.stock.put(info[0], 0);
+                }
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public HashMap<String, Integer> getStock(){
@@ -35,3 +50,4 @@ public class Stock {
         }
     }
 }
+
